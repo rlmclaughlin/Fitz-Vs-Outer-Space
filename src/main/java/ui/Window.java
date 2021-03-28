@@ -12,6 +12,7 @@ public class Window extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         screen = new Screen();
         add(screen);
+        addKeyListener(screen);
     }
 
     public void startGame(){

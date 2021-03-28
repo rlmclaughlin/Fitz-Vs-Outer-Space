@@ -1,8 +1,10 @@
 package ui;
 
 import javax.swing.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Screen extends JPanel implements Runnable {
+public class Screen extends JPanel implements Runnable, KeyListener {
 
     private int i = 0;
     private Thread thread;
@@ -18,7 +20,26 @@ public class Screen extends JPanel implements Runnable {
     @Override
     public void run() {
         while(true){
-            System.out.println("updates/ticks: " + i++);
+            try{
+                Thread.sleep(20);
+            } catch(InterruptedException e){
+                e.printStackTrace();
+            }
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        System.out.println("Key Typed");
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("Key Pushed");
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        System.out.println("Key Released");
     }
 }

@@ -1,6 +1,7 @@
 package ui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -26,6 +27,10 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void paint(Graphics g){
+        g.drawRect(100, 100, 100, 100);
     }
 
     @Override

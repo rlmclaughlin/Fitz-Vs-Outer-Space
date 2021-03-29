@@ -13,6 +13,7 @@ public class NylanCat {
     private float speedY = 0;
     private Animation animateCat;
     private Rectangle rectangle;
+    private boolean isPlaying = true;
 
     public NylanCat(){
 
@@ -90,5 +91,13 @@ public class NylanCat {
 
     public void setSpeedY(float speedY) {
         this.speedY = speedY;
+    }
+
+    public void setPlaying(boolean active){
+        isPlaying = active;
+    }
+
+    public boolean getIsPlaying(){
+        return isPlaying;
     }
 }

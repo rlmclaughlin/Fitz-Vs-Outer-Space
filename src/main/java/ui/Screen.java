@@ -2,14 +2,20 @@ package ui;
 
 import object.MoonSurface;
 import object.NylanCat;
+import object.ObstacleManager;
 import object.UFO;
+import util.Resource;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
 public class Screen extends JPanel implements Runnable, KeyListener {
+    public static final int INTRO_STATE = 0;
+    public static final int PLAY_STATE = 1;
+    public static final int GAME_OVER = 2;
 
     public static final float gravity = 0.1f;
     public static final float ground = 288;
@@ -17,14 +23,17 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     private NylanCat nylanCat;
     private Thread thread;
     private MoonSurface moonSurface;
-    private UFO ufo;
+    private ObstacleManager obstacleManager;
+    private int gameState = INTRO_STATE;
+    private BufferedImage gameOverText;
 
     public Screen(){
         thread = new Thread(this);
         nylanCat = new NylanCat();
         nylanCat.setX(45);
         moonSurface = new MoonSurface(this);
-        ufo = new UFO();
+        obstacleManager = new ObstacleManager(nylanCat);
+        gameOverText = Resource.getResourceImage("data/fitz-lost.png");
     }
 
     public void startGame(){
@@ -35,12 +44,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     public void run() {
         while(true){
             try{
-                nylanCat.update();
-                moonSurface.update();
-                ufo.update();
-                if(ufo.getBound().intersects(nylanCat.getBound())){
-                    System.out.println("Collision");
-                }
+                update();
                 repaint();
                 Thread.sleep(20);
             } catch(InterruptedException e){
@@ -49,29 +53,69 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         }
     }
 
+    public void update(){
+        switch(gameState){
+            case PLAY_STATE:
+                nylanCat.update();
+                moonSurface.update();
+                obstacleManager.update();
+                if(!nylanCat.getIsPlaying()){
+                    gameState = GAME_OVER;
+                }
+                break;
+        }
+
+    }
+
     @Override
     public void paint(Graphics graphics){
         graphics.setColor(Color.white);
         graphics.fillRect(0, 0, getWidth(), getHeight());
         graphics.setColor(Color.black);
         graphics.drawLine(0, (int)ground, getWidth(), (int)ground);
-        moonSurface.draw(graphics);
-        nylanCat.draw(graphics);
-        ufo.draw(graphics);
+
+        switch(gameState){
+            case INTRO_STATE:
+                nylanCat.draw(graphics);
+                moonSurface.draw(graphics);
+                graphics.drawImage(Resource.getResourceImage("data/fitz-vs-outerspace.png"), 200, 50, null);
+                break;
+            case PLAY_STATE:
+                moonSurface.draw(graphics);
+                nylanCat.draw(graphics);
+                obstacleManager.draw(graphics);
+                break;
+            case GAME_OVER:
+                moonSurface.draw(graphics);
+                nylanCat.draw(graphics);
+                obstacleManager.draw(graphics);
+                graphics.drawImage(gameOverText, 200, 50, null);
+                break;
+        }
+
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        System.out.println("Key Typed");
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        nylanCat.jump();
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println("Key Released");
+        switch(e.getKeyCode()){
+            case KeyEvent.VK_SPACE:
+                if(gameState == INTRO_STATE){
+                    gameState = PLAY_STATE;
+                } else if(gameState == PLAY_STATE){
+                    nylanCat.jump();
+                } else if(gameState == GAME_OVER){
+                    gameState = PLAY_STATE;
+                }
+                break;
+        }
     }
 }

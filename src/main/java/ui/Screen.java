@@ -1,5 +1,6 @@
 package ui;
 
+import object.MoonSurface;
 import object.NylanCat;
 
 import javax.swing.*;
@@ -10,15 +11,16 @@ import java.awt.event.KeyListener;
 public class Screen extends JPanel implements Runnable, KeyListener {
 
     public static final float gravity = 0.1f;
-    public static final float ground = 300;
+    public static final float ground = 288;
 
     private NylanCat nylanCat;
-
     private Thread thread;
+    private MoonSurface moonSurface;
 
     public Screen(){
         thread = new Thread(this);
         nylanCat = new NylanCat();
+        moonSurface = new MoonSurface(this);
     }
 
     public void startGame(){
@@ -30,6 +32,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         while(true){
             try{
                 nylanCat.update();
+                moonSurface.update();
                 repaint();
                 Thread.sleep(20);
             } catch(InterruptedException e){
@@ -44,6 +47,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         graphics.fillRect(0, 0, getWidth(), getHeight());
         graphics.setColor(Color.black);
         graphics.drawLine(0, (int)ground, getWidth(), (int)ground);
+        moonSurface.draw(graphics);
         nylanCat.draw(graphics);
     }
 

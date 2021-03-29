@@ -14,6 +14,8 @@ public class NylanCat {
     private Animation animateCat;
 
     public NylanCat(){
+
+        //my cat images
         animateCat = new Animation(200);
         animateCat.addFrame(Resource.getResourceImage("data/greyCat2.png"));
         animateCat.addFrame(Resource.getResourceImage("data/greyCat1.png"));
@@ -25,20 +27,34 @@ public class NylanCat {
         if(y >= ground - animateCat.getFrame().getHeight()){
             speedY = 0;
             y = ground - animateCat.getFrame().getHeight();
+            bounce();
         } else {
             speedY += gravity;
             y += speedY;
         }
+
+        // signals cat is out of gravity zone, auto lose. Refactor into a function later!!!
+
+        if(getY() < (float) -15.0){
+            System.out.println("LOSE");
+        }
     }
 
     public void draw(Graphics g){
+        //illustrating cat
         g.setColor(Color.black);
-        g.drawRect((int) x, (int) y, animateCat.getFrame().getWidth(), animateCat.getFrame().getHeight());
         g.drawImage(animateCat.getFrame(), (int) x, (int) y, null);
     }
 
     public void jump(){
         speedY = -4;
+        y += speedY;
+    }
+
+
+    // routine moon bounce for cat when not pushing jump
+    public void bounce(){
+        speedY = -2;
         y += speedY;
     }
 

@@ -8,7 +8,7 @@ public class Window extends JFrame {
 
     public Window(){
         super("Fitz V.S. Outer Space!");
-        setSize(800, 400);
+        setSize(700, 339);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         screen = new Screen();
         add(screen);

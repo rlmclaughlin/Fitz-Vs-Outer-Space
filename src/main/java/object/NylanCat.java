@@ -12,6 +12,7 @@ public class NylanCat {
     private float y = 0;
     private float speedY = 0;
     private Animation animateCat;
+    private Rectangle rectangle;
 
     public NylanCat(){
 
@@ -19,6 +20,7 @@ public class NylanCat {
         animateCat = new Animation(200);
         animateCat.addFrame(Resource.getResourceImage("data/greyCat2.png"));
         animateCat.addFrame(Resource.getResourceImage("data/greyCat1.png"));
+        rectangle = new Rectangle();
     }
 
     public void update(){
@@ -35,9 +37,17 @@ public class NylanCat {
 
         // signals cat is out of gravity zone, auto lose. Refactor into a function later!!!
 
-        if(getY() < (float) -15.0){
+        if(getY() < -13.0){
             System.out.println("LOSE");
         }
+        rectangle.x = (int) x;
+        rectangle.y = (int) y;
+        rectangle.width = animateCat.getFrame().getWidth();
+        rectangle.height = animateCat.getFrame().getHeight();
+    }
+
+    public Rectangle getBound(){
+        return rectangle;
     }
 
     public void draw(Graphics g){

@@ -2,6 +2,7 @@ package ui;
 
 import object.MoonSurface;
 import object.NylanCat;
+import object.UFO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,11 +17,14 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     private NylanCat nylanCat;
     private Thread thread;
     private MoonSurface moonSurface;
+    private UFO ufo;
 
     public Screen(){
         thread = new Thread(this);
         nylanCat = new NylanCat();
+        nylanCat.setX(45);
         moonSurface = new MoonSurface(this);
+        ufo = new UFO();
     }
 
     public void startGame(){
@@ -33,6 +37,10 @@ public class Screen extends JPanel implements Runnable, KeyListener {
             try{
                 nylanCat.update();
                 moonSurface.update();
+                ufo.update();
+                if(ufo.getBound().intersects(nylanCat.getBound())){
+                    System.out.println("Collision");
+                }
                 repaint();
                 Thread.sleep(20);
             } catch(InterruptedException e){
@@ -49,6 +57,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         graphics.drawLine(0, (int)ground, getWidth(), (int)ground);
         moonSurface.draw(graphics);
         nylanCat.draw(graphics);
+        ufo.draw(graphics);
     }
 
     @Override

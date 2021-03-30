@@ -34,9 +34,10 @@ public class MoonSurface {
         for(MoonSurfaceImage moonImg : listImage){
             moonImg.posX --;
         }
-        if(listImage.get(0).posX + moonImg1.getWidth() < 0);
+        if(listImage.get(0).posX + moonImg1.getWidth() < 0) {
             listImage.add(listImage.get(0));
             listImage.remove(0);
+        }
     }
 
     public void draw(Graphics graphics){

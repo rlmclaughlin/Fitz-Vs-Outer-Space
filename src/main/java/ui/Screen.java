@@ -25,6 +25,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     private MoonSurface moonSurface;
     private ObstacleManager obstacleManager;
     private int score;
+    private int lives = 3;
 
     private int gameState = INTRO_STATE;
     private BufferedImage gameOverText;
@@ -90,6 +91,8 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 nylanCat.draw(graphics);
                 obstacleManager.draw(graphics);
                 graphics.setColor(Color.GREEN);
+                graphics.drawString("Lives: " + String.valueOf(lives), 540, 30);
+                graphics.setColor(Color.GREEN);
                 graphics.drawString("Score: " + String.valueOf(score), 600, 30);
                 break;
             case GAME_OVER:
@@ -97,6 +100,8 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 nylanCat.draw(graphics);
                 obstacleManager.draw(graphics);
                 graphics.drawImage(gameOverText, 200, 50, null);
+                graphics.setColor(Color.GREEN);
+                graphics.drawString("Lives: " + String.valueOf(lives), 540, 30);
                 graphics.setColor(Color.GREEN);
                 graphics.drawString("Score: " + String.valueOf(score), 600, 30);
                 break;
@@ -108,7 +113,6 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         nylanCat.setX(45);
         nylanCat.setY(0);
         nylanCat.setSpeedY(0);
-        score = 0;
         obstacleManager.reset();
     }
 
@@ -129,8 +133,16 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 } else if(gameState == PLAY_STATE){
                     nylanCat.jump();
                 } else if(gameState == GAME_OVER){
-                    gameState = PLAY_STATE;
-                    resetGame();
+                    if(lives <= 1 ){
+                        gameState = PLAY_STATE;
+                        score = 0;
+                        lives = 3;
+                        resetGame();
+                    } else {
+                        lives -= 1;
+                        gameState = PLAY_STATE;
+                        resetGame();
+                    }
                 }
                 break;
         }

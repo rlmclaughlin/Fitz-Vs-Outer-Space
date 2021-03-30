@@ -5,6 +5,7 @@ import javax.swing.*;
 public class Window extends JFrame {
 
     private Screen screen;
+    
 
     public Window(){
         super("Fitz VS Outer Space!");

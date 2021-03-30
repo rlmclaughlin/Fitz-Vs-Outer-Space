@@ -7,4 +7,5 @@ public abstract class Obstacle {
     public abstract void draw(Graphics graphics);
     public abstract void update();
     public abstract boolean isOutOfScreen();
+    public abstract boolean isGameOver();
 }

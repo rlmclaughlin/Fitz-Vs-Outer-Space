@@ -10,8 +10,10 @@ public class UFO extends Obstacle {
     private BufferedImage image;
     private int posX, posY;
     private Rectangle rectangle;
+    private NylanCat nylanCat;
 
-    public UFO(){
+    public UFO(NylanCat nylanCat){
+        this.nylanCat = nylanCat;
         posX = 360;
         posY = 229;
         rectangle = new Rectangle();
@@ -51,4 +53,10 @@ public class UFO extends Obstacle {
     public boolean isOutOfScreen(){
        return (posX + image.getWidth() < 0);
     }
+
+    @Override
+    public boolean isGameOver() {
+        return (nylanCat.getX() > posX);
+    }
+
 }

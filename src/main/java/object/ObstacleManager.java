@@ -20,7 +20,7 @@ public class ObstacleManager {
         ufoImage1 =  Resource.getResourceImage("data/ufo1.png");
         ufoImage2 =  Resource.getResourceImage("data/comet-1.png");
         random = new Random();
-        UFO ufo = new UFO();
+        UFO ufo = new UFO(nylanCat);
         obstacles.add(getRandomUFO());
         random = new Random();
 
@@ -47,7 +47,7 @@ public class ObstacleManager {
     }
 
     private UFO getRandomUFO(){
-        UFO ufo = new UFO();
+        UFO ufo = new UFO(nylanCat);
         ufo.setX(701);
         if(random.nextBoolean()){
             ufo.setImage(ufoImage1);

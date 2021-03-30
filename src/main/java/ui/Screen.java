@@ -24,6 +24,8 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     private Thread thread;
     private MoonSurface moonSurface;
     private ObstacleManager obstacleManager;
+    private int score;
+
     private int gameState = INTRO_STATE;
     private BufferedImage gameOverText;
 
@@ -84,12 +86,16 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 moonSurface.draw(graphics);
                 nylanCat.draw(graphics);
                 obstacleManager.draw(graphics);
+                graphics.setColor(Color.GREEN);
+                graphics.drawString("Score: " + String.valueOf(score), 600, 30);
                 break;
             case GAME_OVER:
                 moonSurface.draw(graphics);
                 nylanCat.draw(graphics);
                 obstacleManager.draw(graphics);
                 graphics.drawImage(gameOverText, 200, 50, null);
+                graphics.setColor(Color.GREEN);
+                graphics.drawString("Score: " + String.valueOf(score), 600, 30);
                 break;
         }
 

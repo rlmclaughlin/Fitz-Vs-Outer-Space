@@ -37,4 +37,19 @@ class NylanCatTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void getXReturnsCorrectInteger(){
+        nylanCat.setX(5);
+        float expected = 5;
+        float actual = nylanCat.getX();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void isPlayingReturnsTrue(){
+        nylanCat.setPlaying(true);
+        boolean actual = nylanCat.getIsPlaying();
+        assertTrue(actual);
+    }
+
 }

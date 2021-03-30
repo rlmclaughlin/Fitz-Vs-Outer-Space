@@ -13,6 +13,7 @@ public class ObstacleManager {
     private List<Obstacle>obstacles;
     private Random random;
     private BufferedImage ufoImage1, ufoImage2;
+    private BufferedImage cometImage1, cometImage2;
     private NylanCat nylanCat;
     private Screen screen;
 
@@ -21,12 +22,18 @@ public class ObstacleManager {
         this.screen = screen;
         this.nylanCat = nylanCat;
         obstacles = new ArrayList<>();
+
         ufoImage1 =  Resource.getResourceImage("data/ufo1.png");
-        ufoImage2 =  Resource.getResourceImage("data/comet-1.png");
+        ufoImage2 =  Resource.getResourceImage("data/ufo2.png");
+        cometImage1 =  Resource.getResourceImage("data/comet-2.png");
+        cometImage2 =  Resource.getResourceImage("data/comet-1.png");
+
         random = new Random();
         UFO ufo = new UFO(nylanCat);
-        obstacles.add(getRandomUFO());
+        Comet comet = new Comet(nylanCat);
 
+        obstacles.add(getRandomUFO());
+        obstacles.add(getRandomComet());
     }
 
     public void update(){
@@ -44,6 +51,7 @@ public class ObstacleManager {
         if(firstObstacle.isOutOfScreen()){
             obstacles.remove(firstObstacle);
             obstacles.add(getRandomUFO());
+            obstacles.add(getRandomComet());
         }
     }
 
@@ -56,6 +64,7 @@ public class ObstacleManager {
     public void reset(){
         obstacles.clear();
         obstacles.add(getRandomUFO());
+        obstacles.add(getRandomComet());
 
     }
 
@@ -69,4 +78,18 @@ public class ObstacleManager {
         }
         return ufo;
     }
+
+    private Comet getRandomComet(){
+        Comet comet = new Comet(nylanCat);
+        comet.setX(858);
+        comet.setY(20);
+        if(random.nextBoolean()){
+            comet.setImage(cometImage1);
+        } else {
+            comet.setImage(cometImage2);
+        }
+        return comet;
+    }
 }
+
+

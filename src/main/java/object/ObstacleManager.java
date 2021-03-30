@@ -26,7 +26,6 @@ public class ObstacleManager {
         random = new Random();
         UFO ufo = new UFO(nylanCat);
         obstacles.add(getRandomUFO());
-        random = new Random();
 
     }
 
@@ -52,6 +51,12 @@ public class ObstacleManager {
         for(Obstacle index : obstacles){
             index.draw(graphics);
         }
+    }
+
+    public void reset(){
+        obstacles.clear();
+        obstacles.add(getRandomUFO());
+
     }
 
     private UFO getRandomUFO(){

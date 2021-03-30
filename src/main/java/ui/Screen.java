@@ -48,7 +48,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
             try{
                 update();
                 repaint();
-                Thread.sleep(20);
+                Thread.sleep(12);
             } catch(InterruptedException e){
                 e.printStackTrace();
             }
@@ -103,7 +103,14 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 graphics.drawString("Score: " + String.valueOf(score), 600, 30);
                 break;
         }
+    }
 
+    private void resetGame(){
+        nylanCat.setPlaying(true);
+        nylanCat.setX(45);
+        nylanCat.setY(0);
+        nylanCat.setSpeedY(0);
+        obstacleManager.reset();
     }
 
     @Override
@@ -112,7 +119,6 @@ public class Screen extends JPanel implements Runnable, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
     }
 
     @Override
@@ -125,6 +131,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                     nylanCat.jump();
                 } else if(gameState == GAME_OVER){
                     gameState = PLAY_STATE;
+                    resetGame();
                 }
                 break;
         }

@@ -133,7 +133,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 } else if(gameState == PLAY_STATE){
                     nylanCat.jump();
                 } else if(gameState == GAME_OVER){
-                    if(lives <= 1 ){
+                    if(lives <= 1){
                         gameState = PLAY_STATE;
                         score = 0;
                         lives = 3;

@@ -65,7 +65,6 @@ public class ObstacleManager {
         obstacles.clear();
         obstacles.add(getRandomUFO());
         obstacles.add(getRandomComet());
-
     }
 
     private UFO getRandomUFO(){
@@ -73,6 +72,7 @@ public class ObstacleManager {
         ufo.setX(701);
         if(random.nextBoolean()){
             ufo.setImage(ufoImage1);
+            ufo.setX(755);
         } else {
             ufo.setImage(ufoImage2);
         }
@@ -85,6 +85,7 @@ public class ObstacleManager {
         comet.setY(20);
         if(random.nextBoolean()){
             comet.setImage(cometImage1);
+            comet.setX(955);
         } else {
             comet.setImage(cometImage2);
         }

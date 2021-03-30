@@ -1,4 +1,5 @@
 package object;
+import ui.Screen;
 import util.Animation;
 import util.Resource;
 
@@ -35,12 +36,12 @@ public class NylanCat {
             speedY += gravity;
             y += speedY;
         }
-
-        // signals cat is out of gravity zone, auto lose. Refactor into a function later!!!
-
-        if(getY() < -13.0){
-            System.out.println("LOSE");
+        if(getY() < -27){
+            speedY = -10;
+            y += speedY;
+            leaveOrbit();
         }
+
         rectangle.x = (int) x;
         rectangle.y = (int) y;
         rectangle.width = animateCat.getFrame().getWidth();
@@ -62,11 +63,15 @@ public class NylanCat {
         y += speedY;
     }
 
-
-    // routine moon bounce for cat when not pushing jump
     public void bounce(){
         speedY = -2;
         y += speedY;
+    }
+
+    public void leaveOrbit(){
+        speedY = -10;
+        y += speedY;
+        setPlaying(false);
     }
 
     public float getX() {

@@ -81,7 +81,7 @@ public class ObstacleManager {
 
     private Comet getRandomComet(){
         Comet comet = new Comet(nylanCat);
-        comet.setX(858);
+        comet.setX(898);
         comet.setY(20);
         if(random.nextBoolean()){
             comet.setImage(cometImage1);

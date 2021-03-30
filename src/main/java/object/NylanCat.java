@@ -20,8 +20,8 @@ public class NylanCat {
 
         //my cat images
         animateCat = new Animation(200);
-        animateCat.addFrame(Resource.getResourceImage("data/greyCat2.png"));
-        animateCat.addFrame(Resource.getResourceImage("data/greyCat1.png"));
+        animateCat.addFrame(Resource.getResourceImage("data/orange-cat-4.png"));
+        animateCat.addFrame(Resource.getResourceImage("data/orange-cat-1.png"));
         rectangle = new Rectangle();
     }
 

@@ -1,5 +1,6 @@
 package object;
 
+import ui.Screen;
 import util.Resource;
 
 import java.awt.*;
@@ -13,8 +14,11 @@ public class ObstacleManager {
     private Random random;
     private BufferedImage ufoImage1, ufoImage2;
     private NylanCat nylanCat;
+    private Screen screen;
 
-    public ObstacleManager(NylanCat nylanCat){
+    
+    public ObstacleManager(NylanCat nylanCat, Screen screen){
+        this.screen = screen;
         this.nylanCat = nylanCat;
         obstacles = new ArrayList<>();
         ufoImage1 =  Resource.getResourceImage("data/ufo1.png");
@@ -29,6 +33,9 @@ public class ObstacleManager {
     public void update(){
         for(Obstacle index : obstacles){
             index.update();
+            if(index.isGameOver()){
+                screen.incrementScore(1);
+            }
             if(index.getBound().intersects(nylanCat.getBound())){
                 nylanCat.setPlaying(false);
             }

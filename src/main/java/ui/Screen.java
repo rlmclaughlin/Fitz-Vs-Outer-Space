@@ -34,7 +34,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         nylanCat = new NylanCat();
         nylanCat.setX(45);
         moonSurface = new MoonSurface(this);
-        obstacleManager = new ObstacleManager(nylanCat);
+        obstacleManager = new ObstacleManager(nylanCat, this);
         gameOverText = Resource.getResourceImage("data/fitz-lost.png");
     }
 
@@ -64,9 +64,14 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 if(!nylanCat.getIsPlaying()){
                     gameState = GAME_OVER;
                 }
+
                 break;
         }
 
+    }
+
+    public void incrementScore(int score){
+        this.score += score;
     }
 
     @Override

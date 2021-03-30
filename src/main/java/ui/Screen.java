@@ -64,10 +64,8 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 if(!nylanCat.getIsPlaying()){
                     gameState = GAME_OVER;
                 }
-
                 break;
         }
-
     }
 
     public void incrementScore(int score){
@@ -110,6 +108,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         nylanCat.setX(45);
         nylanCat.setY(0);
         nylanCat.setSpeedY(0);
+        score = 0;
         obstacleManager.reset();
     }
 

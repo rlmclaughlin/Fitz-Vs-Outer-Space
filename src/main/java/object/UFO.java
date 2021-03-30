@@ -11,6 +11,7 @@ public class UFO extends Obstacle {
     private int posX, posY;
     private Rectangle rectangle;
     private NylanCat nylanCat;
+    private boolean isPointsEarned = false;
 
     public UFO(NylanCat nylanCat){
         this.nylanCat = nylanCat;
@@ -55,8 +56,17 @@ public class UFO extends Obstacle {
     }
 
     @Override
-    public boolean isGameOver() {
+    public boolean isOverObstacle() {
         return (nylanCat.getX() > posX);
     }
 
+    @Override
+    public boolean isPointsEarned(){
+        return isPointsEarned;
+    }
+
+    @Override
+    public void setPointsEarned(boolean isPointsEarned){
+        this.isPointsEarned = isPointsEarned;
+    }
 }

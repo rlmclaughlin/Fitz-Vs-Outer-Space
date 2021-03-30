@@ -33,8 +33,9 @@ public class ObstacleManager {
     public void update(){
         for(Obstacle index : obstacles){
             index.update();
-            if(index.isGameOver()){
+            if(index.isOverObstacle() && !index.isPointsEarned()){
                 screen.incrementScore(1);
+                index.setPointsEarned(true);
             }
             if(index.getBound().intersects(nylanCat.getBound())){
                 nylanCat.setPlaying(false);

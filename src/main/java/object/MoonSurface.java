@@ -7,8 +7,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import static ui.Screen.ground;
-
 public class MoonSurface {
 
     private ArrayList<MoonSurfaceImage> listImage;

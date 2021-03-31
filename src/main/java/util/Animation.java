@@ -13,7 +13,7 @@ public class Animation {
 
     public Animation(int deltaTime){
         this.deltaTime = deltaTime;
-        frames = new ArrayList<BufferedImage>();
+        frames = new ArrayList<>();
     }
 
     public void update(){

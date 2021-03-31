@@ -1,5 +1,4 @@
 package object;
-import ui.Screen;
 import util.Animation;
 import util.Resource;
 

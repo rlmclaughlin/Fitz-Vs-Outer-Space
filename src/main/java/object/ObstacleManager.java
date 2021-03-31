@@ -29,8 +29,6 @@ public class ObstacleManager {
         cometImage2 =  Resource.getResourceImage("data/comet-1.png");
 
         random = new Random();
-        UFO ufo = new UFO(nylanCat);
-        Comet comet = new Comet(nylanCat);
 
         obstacles.add(getRandomUFO());
         obstacles.add(getRandomComet());

@@ -10,7 +10,7 @@ class UFOTest {
 
     @Test
     public void sanityCheck(){
-         UFO ufo = new UFO(nylanCat);
+          new UFO(nylanCat);
     }
 
     @Test

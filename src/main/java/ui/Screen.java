@@ -3,7 +3,6 @@ package ui;
 import object.MoonSurface;
 import object.NylanCat;
 import object.ObstacleManager;
-import object.UFO;
 import util.Resource;
 
 import javax.swing.*;
@@ -25,10 +24,11 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     private Thread thread;
     private MoonSurface moonSurface;
     private ObstacleManager obstacleManager;
+
     private int score;
     private int lives = 3;
-
     private int gameState = INTRO_STATE;
+
     private BufferedImage gameOverText;
     private BufferedImage instructions;
     private BufferedImage instructionsBackground;
@@ -42,8 +42,6 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         gameOverText = Resource.getResourceImage("data/fitz-lost.png");
         instructions = Resource.getResourceImage("data/instructions.png");
         instructionsBackground = Resource.getResourceImage("data/menu-screen.png");
-
-
     }
 
     public void startGame(){
@@ -64,15 +62,13 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     }
 
     public void update(){
-        switch(gameState){
-            case PLAY_STATE:
-                nylanCat.update();
-                moonSurface.update();
-                obstacleManager.update();
-                if(!nylanCat.getIsPlaying()){
-                    gameState = GAME_OVER;
-                }
-                break;
+        if (gameState == PLAY_STATE) {
+            nylanCat.update();
+            moonSurface.update();
+            obstacleManager.update();
+            if (!nylanCat.getIsPlaying()) {
+                gameState = GAME_OVER;
+            }
         }
     }
 
@@ -100,9 +96,9 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 nylanCat.draw(graphics);
                 obstacleManager.draw(graphics);
                 graphics.setColor(Color.GREEN);
-                graphics.drawString("Lives: " + String.valueOf(lives), 540, 30);
+                graphics.drawString("Lives: " + lives, 540, 30);
                 graphics.setColor(Color.GREEN);
-                graphics.drawString("Score: " + String.valueOf(score), 600, 30);
+                graphics.drawString("Score: " + score, 600, 30);
                 break;
             case GAME_OVER:
                 moonSurface.draw(graphics);
@@ -110,9 +106,9 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 obstacleManager.draw(graphics);
                 graphics.drawImage(gameOverText, 200, 50, null);
                 graphics.setColor(Color.GREEN);
-                graphics.drawString("Lives: " + String.valueOf(lives), 540, 30);
+                graphics.drawString("Lives: " + lives, 540, 30);
                 graphics.setColor(Color.GREEN);
-                graphics.drawString("Score: " + String.valueOf(score), 600, 30);
+                graphics.drawString("Score: " + score, 600, 30);
                 break;
             case INFO_STATE:
                 graphics.drawImage(instructionsBackground, 0, 0, null);

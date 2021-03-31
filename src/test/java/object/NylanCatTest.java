@@ -10,7 +10,7 @@ class NylanCatTest {
 
     @Test
     public void sanityCheck(){
-        NylanCat nylanCat = new NylanCat();
+         new NylanCat();
     }
 
     @Test

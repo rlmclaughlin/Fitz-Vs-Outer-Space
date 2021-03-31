@@ -1,7 +1,5 @@
 package object;
 
-import util.Resource;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -40,10 +38,6 @@ public class UFO extends Obstacle {
 
     public void setX(int x){
         posX = x;
-    }
-
-    public void setY(int y){
-        posY = y;
     }
 
     public void setImage(BufferedImage image){

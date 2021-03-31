@@ -11,6 +11,7 @@ class CometTest {
 
     @Test
     public void sanityCheck(){
+        new Comet(nylanCat); 
     }
 
     @Test

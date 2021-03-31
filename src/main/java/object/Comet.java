@@ -1,7 +1,5 @@
 package object;
 
-import util.Resource;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

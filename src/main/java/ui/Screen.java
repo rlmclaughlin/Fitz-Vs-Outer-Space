@@ -20,18 +20,18 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     public static final float gravity = 0.1f;
     public static final float ground = 288;
 
-    private NylanCat nylanCat;
-    private Thread thread;
-    private MoonSurface moonSurface;
-    private ObstacleManager obstacleManager;
+    private final NylanCat nylanCat;
+    private final Thread thread;
+    private final MoonSurface moonSurface;
+    private final ObstacleManager obstacleManager;
 
     private int score;
     private int lives = 3;
     private int gameState = INTRO_STATE;
 
-    private BufferedImage gameOverText;
-    private BufferedImage instructions;
-    private BufferedImage instructionsBackground;
+    private final BufferedImage gameOverText;
+    private final BufferedImage instructions;
+    private final BufferedImage instructionsBackground;
 
     public Screen(){
         thread = new Thread(this);
@@ -140,19 +140,17 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                     gameState = PLAY_STATE;
                 } else if(gameState == PLAY_STATE){
                     nylanCat.jump();
-                } else if(gameState == GAME_OVER){
-                    if(lives <= 1){
-                        gameState = PLAY_STATE;
-                        score = 0;
-                        lives = 3;
-                        resetGame();
-                    } else {
-                        lives -= 1;
-                        gameState = PLAY_STATE;
-                        resetGame();
-                    }
+                } else if(gameState == GAME_OVER && lives <= 1){
+                    gameState = PLAY_STATE;
+                    score = 0;
+                    lives = 3;
+                    resetGame();
                 } else if(gameState == INFO_STATE){
                     gameState = INTRO_STATE;
+                } else {
+                    lives -= 1;
+                    gameState = PLAY_STATE;
+                    resetGame();
                 }
                 break;
             case KeyEvent.VK_I:

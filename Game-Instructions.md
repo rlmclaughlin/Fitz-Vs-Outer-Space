@@ -49,5 +49,5 @@ will be found below, and/or on the game.-
     
 11) Once the game has finished, simply hit the space bar to play again. 
     
-12 Have fun! 
+12) Have fun! 
 

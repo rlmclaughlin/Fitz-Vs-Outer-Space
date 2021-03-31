@@ -6,9 +6,10 @@ import java.awt.image.BufferedImage;
 public class UFO extends Obstacle {
 
     private BufferedImage image;
-    private int posX, posY;
-    private Rectangle rectangle;
-    private NylanCat nylanCat;
+    private int posX;
+    private final int posY;
+    private final Rectangle rectangle;
+    private final NylanCat nylanCat;
     private boolean isPointsEarned = false;
 
     public UFO(NylanCat nylanCat){

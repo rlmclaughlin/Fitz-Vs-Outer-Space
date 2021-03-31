@@ -7,8 +7,8 @@ public class Comet extends Obstacle {
 
     private BufferedImage image;
     private int posX, posY;
-    private Rectangle rectangle;
-    private NylanCat nylanCat;
+    private final Rectangle rectangle;
+    private final NylanCat nylanCat;
     private boolean isPointsEarned = false;
 
     public Comet(NylanCat nylanCat){

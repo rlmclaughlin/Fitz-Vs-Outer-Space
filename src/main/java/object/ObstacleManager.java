@@ -10,12 +10,14 @@ import java.util.List;
 import java.util.Random;
 
 public class ObstacleManager {
-    private List<Obstacle>obstacles;
-    private Random random;
-    private BufferedImage ufoImage1, ufoImage2;
-    private BufferedImage cometImage1, cometImage2;
-    private NylanCat nylanCat;
-    private Screen screen;
+    private final List<Obstacle>obstacles;
+    private final Random random;
+    private final BufferedImage ufoImage1;
+    private final BufferedImage ufoImage2;
+    private final BufferedImage cometImage1;
+    private final BufferedImage cometImage2;
+    private final NylanCat nylanCat;
+    private final Screen screen;
 
 
     public ObstacleManager(NylanCat nylanCat, Screen screen){

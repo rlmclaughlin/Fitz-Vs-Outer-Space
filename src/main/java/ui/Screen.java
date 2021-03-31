@@ -37,7 +37,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         thread = new Thread(this);
         nylanCat = new NylanCat();
         nylanCat.setX(45);
-        moonSurface = new MoonSurface(this);
+        moonSurface = new MoonSurface();
         obstacleManager = new ObstacleManager(nylanCat, this);
         gameOverText = Resource.getResourceImage("data/fitz-lost.png");
         instructions = Resource.getResourceImage("data/instructions.png");

@@ -11,8 +11,8 @@ public class NylanCat {
     private float x = 0;
     private float y = 0;
     private float speedY = 0;
-    private Animation animateCat;
-    private Rectangle rectangle;
+    private final Animation animateCat;
+    private final Rectangle rectangle;
     private boolean isPlaying = true;
 
     public NylanCat(){
@@ -28,15 +28,15 @@ public class NylanCat {
             speedY = 0;
             y = ground - animateCat.getFrame().getHeight();
             bounce();
+        } else if(getY() < -27){
+            speedY = -10;
+            y += speedY;
+            leaveOrbit();
         } else {
             speedY += gravity;
             y += speedY;
         }
-        if(getY() < -27){
-            speedY = -10;
-            y += speedY;
-            leaveOrbit();
-        }
+
         rectangle.x = (int) x;
         rectangle.y = (int) y;
         rectangle.width = animateCat.getFrame().getWidth();

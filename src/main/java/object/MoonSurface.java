@@ -1,6 +1,5 @@
 package object;
 
-import ui.Screen;
 import util.Resource;
 
 import java.awt.*;
@@ -9,10 +8,10 @@ import java.util.ArrayList;
 
 public class MoonSurface {
 
-    private ArrayList<MoonSurfaceImage> listImage;
+    private final ArrayList<MoonSurfaceImage> listImage;
     private BufferedImage moonImg1, moonImg2, moonImg3;
 
-    public MoonSurface(Screen screen){
+    public MoonSurface(){
         moonImg1 = Resource.getResourceImage("data/moon-surface-1.png");
         moonImg2 = Resource.getResourceImage("data/moon-surface-2.png");
         moonImg3 = Resource.getResourceImage("data/moon-surface-3.png");
@@ -37,12 +36,12 @@ public class MoonSurface {
     }
 
     public void draw(Graphics graphics){
-        for(int i = 0; i < listImage.size(); i++){
-            graphics.drawImage(listImage.get(i).image, listImage.get(i).posX, 0, null);
+        for (MoonSurfaceImage moonSurfaceImage : listImage) {
+            graphics.drawImage(moonSurfaceImage.image, moonSurfaceImage.posX, 0, null);
         }
     }
 
-    private class MoonSurfaceImage{
+    private static class MoonSurfaceImage{
         int posX;
         BufferedImage image;
     }

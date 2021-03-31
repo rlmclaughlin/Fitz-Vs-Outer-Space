@@ -20,11 +20,9 @@ public class MoonSurface {
         moonImg3 = Resource.getResourceImage("data/moon-surface-3.png");
         listImage = new ArrayList<>();
 
-        //iterating my frames and recycling them. If time, refactor so there can be different scenes.
-
         for(int i = 0; i < 500; i++){
             MoonSurfaceImage moonSurface = new MoonSurfaceImage();
-            moonSurface.posX = (int) (i * moonImg1.getWidth());
+            moonSurface.posX = (i * moonImg1.getWidth());
             moonSurface.image = moonImg1;
             listImage.add(moonSurface);
         }

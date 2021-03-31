@@ -17,17 +17,14 @@ public class NylanCat {
     private boolean isPlaying = true;
 
     public NylanCat(){
-
-        //my cat images
         animateCat = new Animation(200);
-        animateCat.addFrame(Resource.getResourceImage("data/orange-cat-4.png"));
-        animateCat.addFrame(Resource.getResourceImage("data/orange-cat-1.png"));
+        animateCat.addFrame(Resource.getResourceImage("data/orange-cat1.png"));
+        animateCat.addFrame(Resource.getResourceImage("data/orange-cat2.png"));
         rectangle = new Rectangle();
     }
 
     public void update(){
         animateCat.update();
-        // all this code is responsible for jumping
         if(y >= ground - animateCat.getFrame().getHeight()){
             speedY = 0;
             y = ground - animateCat.getFrame().getHeight();
@@ -41,7 +38,6 @@ public class NylanCat {
             y += speedY;
             leaveOrbit();
         }
-
         rectangle.x = (int) x;
         rectangle.y = (int) y;
         rectangle.width = animateCat.getFrame().getWidth();
@@ -53,7 +49,6 @@ public class NylanCat {
     }
 
     public void draw(Graphics g){
-        //illustrating cat
         g.setColor(Color.black);
         g.drawImage(animateCat.getFrame(), (int) x, (int) y, null);
     }

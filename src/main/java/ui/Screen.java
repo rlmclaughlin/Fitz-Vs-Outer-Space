@@ -16,6 +16,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
     public static final int INTRO_STATE = 0;
     public static final int PLAY_STATE = 1;
     public static final int GAME_OVER = 2;
+    public static final int INFO_STATE = 3;
 
     public static final float gravity = 0.1f;
     public static final float ground = 288;
@@ -29,6 +30,8 @@ public class Screen extends JPanel implements Runnable, KeyListener {
 
     private int gameState = INTRO_STATE;
     private BufferedImage gameOverText;
+    private BufferedImage instructions;
+    private BufferedImage instructionsBackground;
 
     public Screen(){
         thread = new Thread(this);
@@ -37,6 +40,10 @@ public class Screen extends JPanel implements Runnable, KeyListener {
         moonSurface = new MoonSurface(this);
         obstacleManager = new ObstacleManager(nylanCat, this);
         gameOverText = Resource.getResourceImage("data/fitz-lost.png");
+        instructions = Resource.getResourceImage("data/instructions.png");
+        instructionsBackground = Resource.getResourceImage("data/menu-screen.png");
+
+
     }
 
     public void startGame(){
@@ -85,6 +92,8 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 nylanCat.draw(graphics);
                 moonSurface.draw(graphics);
                 graphics.drawImage(Resource.getResourceImage("data/fitz-vs-outerspace.png"), 200, 50, null);
+                graphics.setColor(Color.GREEN);
+                graphics.drawString("[ i ] How To Play", 30, 30);
                 break;
             case PLAY_STATE:
                 moonSurface.draw(graphics);
@@ -105,6 +114,9 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 graphics.setColor(Color.GREEN);
                 graphics.drawString("Score: " + String.valueOf(score), 600, 30);
                 break;
+            case INFO_STATE:
+                graphics.drawImage(instructionsBackground, 0, 0, null);
+                graphics.drawImage(instructions, 0, 0, null);
         }
     }
 
@@ -143,8 +155,16 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                         gameState = PLAY_STATE;
                         resetGame();
                     }
+                } else if(gameState == INFO_STATE){
+                    gameState = INTRO_STATE;
                 }
                 break;
+            case KeyEvent.VK_I:
+                if(gameState == INTRO_STATE) {
+                    gameState = INFO_STATE;
+                } else if(gameState == GAME_OVER){
+                    gameState = INFO_STATE;
+                }
         }
     }
 }

@@ -1,9 +1,31 @@
 ## Game Instructions
 
-Place the instructions for how to play your game in this file.  The instructions should be clear enough for any non-technical computer user to understand and follow.
 
 
-1) The entire game is operated through the space bar. 
+****** HOW TO START GAME FROM THE IDE *********
+
+
+There are two ways this can be accomplished: 
+
+1) Click the Green Arrow "build" button at the top of your intellij IDE. This will launch an additional
+   window with a 700 X 300 frame. 
+   
+OR
+
+2) The other way to open the game is by navigating into src/main/java/ui/Window. 
+   Once inside /Window, scroll to the bottom where you'll encounter the "public static void main". Click 
+   on the green arrow to the left of it, and the program will launch the 700 X 300 frame. 
+   
+   
+-After this point, you'll no longer be needing the IDE to move forward. All instructions beyond this point
+will be found below, and/or on the game.-
+
+
+********** GAME INSTRUCTIONS *************
+
+[Once the game is open, click on the 700 X 300 window and tap 'i' on your keyboard if you prefer to read the instructions there.]
+
+1) The entire game is operated through the space bar. The only exception is the instructions section, which is accessed by tapping "i" before or after the game.
    
 2) To begin the game, simply hit the space bar. 
    
@@ -25,5 +47,7 @@ Place the instructions for how to play your game in this file.  The instructions
 10) Beware of jumping too high! If Fitz jumps outside of the frame, he will leave the orbit and a point will
     be removed from "lives". 
     
-11) Have fun! 
+11) Once the game has finished, simply hit the space bar to play again. 
+    
+12 Have fun! 
 

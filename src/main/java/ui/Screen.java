@@ -128,12 +128,12 @@ public class Screen extends JPanel implements Runnable, KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        //Obligated to include method due to being part of awt key listener interface.
+        //Obligated to include this method due to being part of awt key listener interface.
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        //Obligated to include method due to being part of awt key listener interface.
+        //Obligated to include this method due to being part of awt key listener interface.
     }
 
     @Override
@@ -150,10 +150,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                     lives = 3;
                     resetGame();
                 } else if(gameState == INFO_STATE){
-                    gameState = INTRO_STATE;
-                    if(lives > 0){
-                        gameState = PLAY_STATE;
-                    }
+                    gameState = PLAY_STATE;
                 } else {
                     lives -= 1;
                     gameState = PLAY_STATE;

@@ -12,6 +12,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 public class Screen extends JPanel implements Runnable, KeyListener {
+
     public static final int INTRO_STATE = 0;
     public static final int PLAY_STATE = 1;
     public static final int GAME_OVER = 2;
@@ -90,6 +91,7 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 graphics.drawImage(Resource.getResourceImage("data/fitz-vs-outerspace.png"), 200, 50, null);
                 graphics.setColor(Color.GREEN);
                 graphics.drawString("[ i ] How To Play", 30, 30);
+                graphics.drawString("[ Space Bar ] Start", 550, 30);
                 break;
             case PLAY_STATE:
                 moonSurface.draw(graphics);
@@ -97,7 +99,6 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 obstacleManager.draw(graphics);
                 graphics.setColor(Color.GREEN);
                 graphics.drawString("Lives: " + lives, 540, 30);
-                graphics.setColor(Color.GREEN);
                 graphics.drawString("Score: " + score, 600, 30);
                 break;
             case GAME_OVER:
@@ -107,8 +108,9 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                 graphics.drawImage(gameOverText, 200, 50, null);
                 graphics.setColor(Color.GREEN);
                 graphics.drawString("Lives: " + lives, 540, 30);
-                graphics.setColor(Color.GREEN);
                 graphics.drawString("Score: " + score, 600, 30);
+                graphics.drawString("[ i ] How To Play", 35, 295);
+                graphics.drawString("[ Space Bar ] Start", 540, 295);
                 break;
             case INFO_STATE:
                 graphics.drawImage(instructionsBackground, 0, 0, null);
@@ -126,10 +128,12 @@ public class Screen extends JPanel implements Runnable, KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
+        //Obligated to include method due to being part of awt key listener interface.
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
+        //Obligated to include method due to being part of awt key listener interface.
     }
 
     @Override
@@ -147,6 +151,9 @@ public class Screen extends JPanel implements Runnable, KeyListener {
                     resetGame();
                 } else if(gameState == INFO_STATE){
                     gameState = INTRO_STATE;
+                    if(lives > 0){
+                        gameState = PLAY_STATE;
+                    }
                 } else {
                     lives -= 1;
                     gameState = PLAY_STATE;

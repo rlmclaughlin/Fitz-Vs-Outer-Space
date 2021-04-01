@@ -39,10 +39,6 @@ any class that's declared abstract cannot be instantiated. The child class can b
 seen as an extension and expansion of the abstract class. 
 
 
-
-
-
-
 ********************
 4. Polymorphism
    

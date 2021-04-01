@@ -29,8 +29,10 @@ This problem will require Java, Maven, JUnit, and a GUI.
 
 
 <h2>
-    2. Planning the Solution
+    2. Planning the Solution    *****PLEASE REFER TO IMAGES_FOR_UPER FOLDER TO SEE PLANNING STEPS******
 </h2>
+
+*****PLEASE REFER TO the [ IMAGES_FOR_UPER ] FOLDER TO SEE PLANNING STEPS******
 
 For the visual aspect of the game, I intend to mainly utilize AWT. I understand that it's a heavy weight 
 component, however, after conducting exhaustive research, AWT's syntax feels the most comfortable and 
@@ -46,7 +48,7 @@ I intend to build out a diagram that maps each step of the way and will illustra
 class, one by one. My initial plan is to pursue this from a TDD approach, however, if this becomes an obstacle 
 on the road to completion, i intend to abort early into the process. 
 
-******You'll find the diagrams that are mentioned above in the ______ folder. 
+******You'll find the diagrams that are mentioned above in the IMAGES_FOR_UPER folder. 
 
 <h2>
     3. Executing the Plan

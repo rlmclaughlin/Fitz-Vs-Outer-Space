@@ -19,7 +19,6 @@ public class ObstacleManager {
     private final NylanCat nylanCat;
     private final Screen screen;
 
-
     public ObstacleManager(NylanCat nylanCat, Screen screen){
         this.screen = screen;
         this.nylanCat = nylanCat;
